@@ -2,16 +2,29 @@
 window.shujaa = window.shujaa || {};
 
 (function (){
-    var World;
+    var Shujaa;
 
-    World = function (mapUrl) {
-        this._mapUrl = mapUrl;
+    Shujaa = function (gameConfig) {
+        var instance = this;
+
+        instance._mapUrl = gameConfig.mapUrl;
+
+        instance._mapReady = false;
+        instance._mapImage = new Image();
+        instance._mapImage.onload = function () {
+            console.log('map loaded');
+            instance._mapReady = true;
+        };
+        instance._mapImage.src = instance._mapUrl;
+    };
+
+    Shujaa.prototype.start = function () {
 
     };
 
-    World.prototype.update = function () {
+    Shujaa.prototype.update = function () {
 
     };
 
-    window.shujaa.World = World;
+    window.shujaa.Shujaa = Shujaa;
 })();

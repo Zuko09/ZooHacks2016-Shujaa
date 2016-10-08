@@ -13,8 +13,12 @@
             canvasId: 'game',
             mapUrl: 'images/map.jpg'
         };
-        var shujaa = new window.shujaa.Shujaa(gameConfig);
-        // call shujaa.start() to start game
+
+        // call shujaa.start() to start game, but not until after the page has loaded
+        var shujaa;
+        window.addEventListener('load', function () {
+            shujaa = new window.shujaa.Shujaa(gameConfig);
+        });
     </script>
 </head>
 <body>
