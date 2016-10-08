@@ -5,8 +5,8 @@
     <title>Shujaa</title>
     <script src="lib/jquery-3.1.1.js" defer></script>
     <script src="src/bigmap.js" defer></script>
+    <script src="src/game.js" defer></script>
     <script src="src/minimap.js" defer></script>
-    <script src="src/shujaa.js" defer></script>
     <script src="src/world.js" defer></script>
     <script>
         var gameConfig = {
@@ -15,9 +15,10 @@
         };
 
         // call shujaa.start() to start game, but not until after the page has loaded
-        var shujaa;
+        window.shujaa = window.shujaa || {};
+        window.shujaa.game = null;
         window.addEventListener('load', function () {
-            shujaa = new window.shujaa.Shujaa(gameConfig);
+            window.shujaa.game = new window.shujaa.Game(gameConfig);
         });
     </script>
 </head>

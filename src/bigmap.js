@@ -1,3 +1,15 @@
-/**
- * Created by Chris on 10/8/2016.
- */
+
+window.shujaa = window.shujaa || {};
+
+(function (){
+    var BigMap;
+
+    BigMap = function () {
+    };
+
+    BigMap.prototype.setMap = function (mapImage) {
+        this._mapImage = mapImage;
+    };
+
+    window.shujaa.BigMap = BigMap;
+})();
