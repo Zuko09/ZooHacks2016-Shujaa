@@ -2,21 +2,33 @@
 <html>
 <title>Front Page</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <link rel="stylesheet" href="WebsiteCode.css">
 
 <body id="myPage">
 
 
 <!-- Image Header -->
-<div class="display-container">
-  <img src="Elephant.jpg" alt="Elephant" style="width:100%;min-:350px;max-height:80%;">
-  <div class="container display-bottomleft" style="height:50%; width:100%;">
-    <button onclick=" " class="btn large yellowGreen yellowGreen-hover" style="margin-left:50%" title="Start">Start</button>
-  </div>
+<div id="start-view" class="display-container display-topleft" style="z-index:2">
+	<img src="Elephant.jpg" alt="Elephant" style="width:100%;min-:350px;max-height:100%;">
+	<div class="container display-bottomleft" style="height:50%; width:100%; z-index:1">
+		<h1 style="margin-left:44vw;">Shujaa</h1>
+		<button onclick=" " class="btn large yellowGreen yellowGreen-hover" style="margin-left:46vw" title="Start">Start</button>
+	</div>
 </div>
 
-<script>
+<div id="main-view" class="container display-topleft" style="z-index:4">
+	<img src="Elephant.jpg" alt="Elephant" style="width:100%;min-:350px;max-height:100%;">
+</div>
+
+<div id="chatlog-view"class="container display-topleft" style="height:75%; width:20%;">
+		
+</div>
+
+<div id="minimap-view">
+	<img src="picture.jpg" alt="pic" style="width:20%;min-:350px;max-height:75%;">
+</div>
+
+<script> 	
 </script>
 
 </body>
