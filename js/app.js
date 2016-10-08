@@ -1,15 +1,18 @@
 (function() {
     'use strict';
 
-    angular.module("myApp", [])
-    .controller("myController", myController);
+    angular.module("shujaaApp", [])
+    .controller("shujaaController", shujaaController);
 
-    myController.$inject = ['$scope', '$filter'];
-    function myController($scope, $filter) {
+    shujaaController.$inject = ['$scope', '$filter'];
+    function shujaaController($scope, $filter) {
         // ELEMENTS:
         //  Start View
         $scope.loadStartView = function() {
             $scope.showingStartView = true;
+            $scope.showingMainView = false;
+            $scope.showingChatlogView = false;
+            $scope.showingMinimapView = false;
         };
         $scope.hideStartView = function() {
             $scope.loadMainView();
