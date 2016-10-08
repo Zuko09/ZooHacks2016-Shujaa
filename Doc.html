@@ -1,31 +1,52 @@
 <!DOCTYPE html>
 <html>
-<title>Front Page</title>
+<head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="WebsiteCode.css">
+<script src="lib/jquery-3.1.1.js" defer></script>
 
+    <meta charset="UTF-8">
+    <title>Shujaa</title>
+    <script src="src/bigmap.js" defer></script>
+    <script src="src/game.js" defer></script>
+    <script src="src/minimap.js" defer></script>
+    <script src="src/world.js" defer></script>
+    <script>
+        var gameConfig = {
+            canvasId: 'game',
+            mapUrl: 'images/map.jpg'
+        };
+
+        // call shujaa.start() to start game, but not until after the page has loaded
+        window.shujaa = window.shujaa || {};
+        window.shujaa.game = null;
+        window.addEventListener('load', function () {
+            window.shujaa.game = new window.shujaa.Game(gameConfig);
+        });
+    </script>
+</head>
 <body id="myPage">
 
 
 <!-- Image Header -->
-<div id="start-view" class="display-container display-topleft" style="z-index:2">
-	<img src="Elephant.jpg" alt="Elephant" style="width:100%;min-:350px;max-height:100%;">
-	<div class="container display-bottomleft" style="height:50%; width:100%; z-index:2">
+<div id="start-view" class="display-container display-topleft start-format">
+	<img src="Elephant.jpg" alt="Elephant" style="width:500px;height:600px;">
+	<div class="container display-bottomleft" style="height:50%; width:100%;">
 		<h1 style="margin-left:44vw;">Shujaa</h1>
-		<button onclick=" " class="btn large yellowGreen yellowGreen-hover" style="margin-left:46vw" title="Start">Start</button>
+		<button onclick="" class="btn large yellowGreen yellowGreen-hover btn-format" title="Start">Start</button>
 	</div>
 </div>
 
-<div id="main-view" class="container display-topleft" style="z-index:4">
-	<img src="Elephant.jpg" alt="Elephant" style="width:100%;min-:350px;max-height:100%;">
+<div id="main-view" class="container display-topleft main-format">
+	<img src="Elephant.jpg" alt="Elephant" style="width:500px;height:600px;">
 </div>
 
-<div id="chatlog-view"class="container display-topleft" style="height:75%; width:20%;">
+<div id="chatlog-view"class="container display-topleft chatlog-format">
 		
 </div>
 
-<div id="minimap-view" style="z-index:1">
-	<img src="picture.jpg" alt="pic" style="width:20%;min-:350px;max-height:75%;">
+<div id="minimap-view" class="container display-topright minimap-format" style="z-index:2;">
+	<img src="picture.jpg" alt="pic">
 </div>
 
 <script> 	

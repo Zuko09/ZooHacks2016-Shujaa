@@ -12,6 +12,7 @@ img{
 body{
 	margin:0
 }
+style="z-index:2; height:300px; width:80px;"
 h1{
 	font-size:48px!important
 }
@@ -23,6 +24,9 @@ h1{
 }
 .display-topleft{
 	position:absolute;left:0;top:0
+}
+.display-topright{
+	position:absolute;right:0;top:0
 }
 .large{
 	font-size:36px!important
