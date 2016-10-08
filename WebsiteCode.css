@@ -12,9 +12,22 @@ img{
 body{
 	margin:0
 }
+
 style="z-index:2; height:300px; width:80px;"
 h1{
 	font-size:48px!important
+}
+.start-format{
+	z-index:4; width:500px; height:600px;
+}
+.main-format{
+	z-index:2; width:500px; height:600px;
+}
+.chatlog-format{
+	z-index:3; width:300px; height:80px;
+}
+.minimap-format{
+	z-index:3; width:90px; height:90px; 
 }
 .container{
 	padding:0.01em
