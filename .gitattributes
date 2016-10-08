@@ -13,6 +13,7 @@
 *.js text eol=lf
 *.js.map text eol=lf
 *.json text eol=lf
+*.txt text eol=lf
 
 # Prefer LF for these files
 .editorconfig text eol=lf

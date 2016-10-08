@@ -1,0 +1,3 @@
+https://jquery.com/
+
+http://james.padolsey.com/javascript/jquery-eventemitter/
