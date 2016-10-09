@@ -5,15 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="WebsiteCode.css">
+	<script src="lib/context-matrix.js" defer></script>
 	<script src="lib/jquery-3.1.1.js" defer></script>
+	<script src="lib/jquery-eventEmitter.js" defer></script>
+	<script src="src/MapMixin.js" defer></script>
+	<script src="src/animal.js" defer></script>
     <script src="src/bigmap.js" defer></script>
     <script src="src/game.js" defer></script>
-    <script src="src/minimap.js" defer></script>
+	<script src="src/minimap.js" defer></script>
+	<script src="src/player.js" defer></script>
+	<script src="src/ranger.js" defer></script>
     <script src="src/world.js" defer></script>
     <script>
         var gameConfig = {
             canvasId: 'game',
-            mapUrl: 'images/map.jpg'
+			bigmapUrl: 'images/map.png',
+			bigmapCanvasId: 'bigMap',
+			minimapUrl: 'images/map.png',
+			minimapCanvasId: 'miniMap',
+			playerName: 'Desmond',
+			rangerNames: ['Aisha', 'Kwesi', 'Francis'],
         };
         // call shujaa.start() to start game, but not until after the page has loaded
         window.shujaa = window.shujaa || {};
@@ -38,7 +49,7 @@
 	</div>
 
 	<div id="main-view" class="container display-topleft main-format"  ng-show="showingMainView">
-		<img src="Elephant.jpg" alt="Elephant">
+		<canvas id="bigMap" width="1024" height="768"></canvas>
 	</div>
 
 	<div id="chatlog-view"class="container display-bottommiddle chatlog-format" ng-show="showingChatlogView">
@@ -46,7 +57,7 @@
 	</div>
 
 	<div id="minimap-view" class="container display-topright minimap-format" ng-show="showingMinimapView">
-		<img src="picture.jpg" alt="pic">
+		<canvas id="miniMap" width="200" height="200"></canvas>
 	</div>
 </body>
 </html>
