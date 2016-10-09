@@ -17,6 +17,7 @@ body{
 	width:100%;
 	position: fixed; 
     overflow-y: hidden;
+	background-color:#77ce7a!important;
 }
 img{
 	max-height:100%;
