@@ -8,6 +8,9 @@ html{
 img{
 	margin:0
 }
+h1{
+	text-shadow: 4px 4px #000000;
+}
 body{
 	margin:0;
 	height:auto;
