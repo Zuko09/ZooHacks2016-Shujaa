@@ -8,12 +8,12 @@ window.shujaa = window.shujaa || {};
         minimapUrl: 'images/map.png',
         minimapCanvasId: 'miniMap',
         player: {
-            name: 'Desmond',
+            name: 'User',
             imageUrl: 'images/player.png',
             script: [
                 {time: 0, event: 'setPosition', dest: [308, 352]},
                 {time: 0, event: 'setDestination', dest: [318, 352]},
-                {time: 10, event: 'setDestination', dest: [325, 332]},
+                {time: 10, event: 'setDestination', dest: [319, 359]},
             ]
         },
         rangers: [{
@@ -22,10 +22,10 @@ window.shujaa = window.shujaa || {};
             script: [
                 {time: 0, event: 'setPosition', dest: [308, 352]},
                 {time: 0, event: 'setDestination', dest: [318, 352]},
-                {time: 10, event: 'setDestination', dest: [325, 332]},
+                {time: 10, event: 'setDestination', dest: [315, 332]},
             ]
         }, {
-            name: 'Kwesi',
+            name: 'Francis',
             imageUrl: 'images/ranger_1.png',
             script: [
                 {time: 0, event: 'setPosition', dest: [308, 352]},
@@ -33,12 +33,12 @@ window.shujaa = window.shujaa || {};
                 {time: 10, event: 'setDestination', dest: [326, 332]},
             ]
         }, {
-            name: 'Francis',
+            name: 'Kwesi',
             imageUrl: 'images/ranger_3.png',
             script: [
                 {time: 0, event: 'setPosition', dest: [308, 352]},
                 {time: 0, event: 'setDestination', dest: [318, 352]},
-                {time: 10, event: 'setDestination', dest: [323, 332]},
+                {time: 10, event: 'setDestination', dest: [339, 372]},
             ]
         }],
         poachers: [{
