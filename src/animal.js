@@ -6,6 +6,13 @@ window.shujaa = window.shujaa || {};
         this._game = game;
         this._name = name;
         this._initialPosition = [x,y];
+        if (name) {
+            var image = new Image();
+            image.onload = function(){
+                this._image = image;
+            }.bind(this);
+            image.src = 'images/' + name + '.png';
+        }
 
         this.initMoverMixin(game, 3);
 

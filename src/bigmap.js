@@ -23,6 +23,8 @@ window.shujaa = window.shujaa || {};
     };
 
     BigMap.prototype.onUpdate = function (event, data) {
+        this._canvas.width = window.innerWidth;
+        this._canvas.height = window.innerHeight;
         this._ctx.clearRect(0, 0, this._ctx.canvas.width, this._ctx.canvas.height);
         this.draw(this._ctx);
     };
