@@ -2,11 +2,15 @@
 window.shujaa = window.shujaa || {};
 
 (function (){
-    function Ranger (game, name, script) {
+    function Ranger (game, config) {
         this._game = game;
-        this._name = name;
+        this._name = config.name;
+        if (config.imageUrl) {
+            this._image = new Image();
+            this._image.src = config.imageUrl;
+        }
 
-        this.initMoverMixin(game, 10, script);
+        this.initMoverMixin(game, 10, config.script);
     }
 
     jQuery.extend(Ranger.prototype, jQuery.eventEmitter);
