@@ -5,7 +5,7 @@ window.shujaa = window.shujaa || {};
     var BigMap;
 
     BigMap = function (game, canvasId, mapUrl) {
-        this.initMapMixin(game, mapUrl, true, 1);
+        this.initMapMixin(game, mapUrl, true, 2);
 
         this._game = game;
         this._canvas = $('#'+canvasId)[0];

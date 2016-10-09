@@ -32,15 +32,15 @@ window.shujaa = window.shujaa || {};
                 context2d.fill();
             }
             if (this._useImages && mover._image) {
-                var dw = this._blipRadius / 2;
-                dw *= 10;
+                var dw = this._blipRadius;
+                dw *= 2;
                 var dh = dw * mover._image.height / mover._image.width;
                 context2d.drawImage(
                     mover._image,
                     mover._position[0] - dw / 2,
                     mover._position[1] - dh / 2,
-                    dw / 2,
-                    dh / 2
+                    dw,
+                    dh
                 );
             }
             else {

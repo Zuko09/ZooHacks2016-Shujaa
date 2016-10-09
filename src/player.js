@@ -4,17 +4,22 @@ window.shujaa = window.shujaa || {};
 (function (){
     var Player;
 
-    Player = function (game) {
+    Player = function (game, config) {
         this._game = game;
 
-        this.initMoverMixin(game, 10);
+        if (config.imageUrl) {
+            this._image = new Image();
+            this._image.src = config.imageUrl;
+        }
+
+        this.initMoverMixin(game, 10, config.script);
 
         game.on('!setDestination', this.onSetDestination.bind(this));
         this.on('!positionSet', this.onPositionSet.bind(this));
     };
 
     Player.prototype.onSetDestination = function (event, data) {
-        console.log('destination:',data);
+        console.log('destination: [',data.x,', ', data.y,']');
         this.setDestination(data.x, data.y);
     };
 

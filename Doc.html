@@ -18,59 +18,13 @@
 	<script src="src/poacher.js" defer></script>
 	<script src="src/ranger.js" defer></script>
     <script src="src/world.js" defer></script>
+	<script src="src/gameConfig.js" defer></script>
     <script>
-        var gameConfig = {
-            canvasId: 'game',
-			bigmapUrl: 'images/map.png',
-			bigmapCanvasId: 'bigMap',
-			minimapUrl: 'images/map.png',
-			minimapCanvasId: 'miniMap',
-			player: {
-				name: 'Desmond',
-				position: [327,353]
-			},
-			rangers: [{
-				name: 'Aisha',
-				imageUrl: 'images/aisha.png',
-				script: [
-					{time: 0, event:'setPosition', dest:[308, 352]},
-					{time: 0, event:'setDestination', dest:[318, 352]},
-					{time: 10, event:'setDestination', dest:[325, 332]},
-				]
-			}, {
-				name: 'Kwesi',
-				imageUrl: 'images/ranger_1.png',
-				script: [
-					{time: 0, event:'setPosition', dest:[308, 352]},
-					{time: 0, event:'setDestination', dest:[318, 352]},
-					{time: 10, event:'setDestination', dest:[326, 332]},
-				]
-			}, {
-				name: 'Francis',
-				imageUrl: 'images/ranger_3.png',
-				script: [
-					{time: 0, event:'setPosition', dest:[308, 352]},
-					{time: 0, event:'setDestination', dest:[318, 352]},
-					{time: 10, event:'setDestination', dest:[323, 332]},
-				]
-			}],
-			animals: [{
-				name: 'elephant',
-				position: [322,339]
-			}, {
-				name: 'elephant',
-				position: [317,369]
-			}],
-			poachers: [{
-				name: 'poacher',
-				position: [332,379]
-			}],
-        };
         // call shujaa.start() to start game, but not until after the page has loaded
         window.shujaa = window.shujaa || {};
         window.shujaa.game = null;
         window.addEventListener('load', function () {
-            window.shujaa.game = new window.shujaa.Game(gameConfig);
+            window.shujaa.game = new window.shujaa.Game(window.shujaa.gameConfig);
         });
 		function hideStartView() {
 			$('#start-view').hide();
@@ -81,7 +35,6 @@
 
 <body id="myPage">
 	<!-- Image Header -->
-	{{loadStartView()}}
 	<div id="start-view" class="display-container display-topleft start-format" ng-show="showingStartView">
 		<img src="Wallpaper2.jpg" alt="Rhino" width="100%">
 		<div class="container" style="position:absolute;left:40%;bottom:58%;center;">
@@ -102,6 +55,137 @@
 
 	<div id="minimap-view" class="container display-topright minimap-format" ng-show="showingMinimapView">
 		<canvas id="miniMap" width="200" height="200"></canvas>
+	</div>
+	<div id="names-table" class="container" ng-show="namesList" style="margin-right:200px;">
+	<h3 style="position:absolute; left:40%; top:5%; font-size:68px;"></h3>
+		<table style="width:100%;">
+			<tr><th>Ramaiah</th><th>India</th><th>Trampled by elephant</th></tr>
+			<tr><th>Naba Krishna Mahanta</th><th>India</th><th>On-duty road accident</th></tr>
+			<tr><th>David Ruhl</th><th>USA</th><th>Died firefighting</th></tr>
+			<tr><th>Michael Hallenbeck</th><th>USA</th><th>Struck by tree firefighting</th></tr>
+			<tr><th>Easter Ishara Birindwa</th><th>DRC</th><th>Killed by Mai Mai</th></tr>
+			<tr><th>Hooshang Naderi</th><th>Iran</th><th>On-duty road accident</th></tr>
+			<tr><th>Ram Swaroop Yadav</th><th>India</th><th>Killed by villagers</th></tr>
+			<tr><th>Richard Wheeler</th><th>USA</th><th>Died firefighting</th></tr>
+			<tr><th>Andrew Zajac</th><th>USA</th><th>Died firefighting</th></tr>
+			<tr><th>Tom Zbyszewski</th><th>USA</th><th>Died firefighting</th></tr>
+			<tr><th>Robert Amadra</th><th>Uganda</th><th>Killed by poacher</th></tr>
+			<tr><th>Tafadzwa Gosho</th><th>Zimbabwe</th><th>Killed by rhino</th></tr>
+			<tr><th>Arman Seitkazinov</th><th>Kazakhstan</th><th>Friendly fire</th></tr>
+			<tr><th>P. Muthusamy</th><th>India</th><th>Trampled by elephant</th></tr>
+			<tr><th>Hon. Ranger - Elephant “Yongki” Indonesia</th><th>Killed by ivory poachers</th></tr>
+			<tr><th>Angad Kumar</th><th>India</th><th>On-duty road accident</th></tr>
+			<tr><th>Ratan Arjun</th><th>Bhutan</th><th>Died from exposure</th></tr>
+			<tr><th>Djuma AdaluUweko</th><th>DRC</th><th>Killed by elephant poachers</th></tr>
+			<tr><th>Andre Gada Migifuloyo</th><th>DRC</th><th>Killed by elephant poachers</th></tr>
+			<tr><th>Anselme Kimbesa Muhindo</th><th>DRC</th><th>Killed by elephant poachers</th></tr>
+			<tr><th>Prasit Khummoo</th><th>Thailand</th><th>Killed by timber poachers</th></tr>
+			<tr><th>Vijay Bahadur</th><th>India</th><th>Suspicious death</th></tr>
+			<tr><th>Yao Zheng Yang</th><th>China</th><th>Trampled by wild elephants</th></tr>
+			<tr><th>Jean Claude Kiza Vunabandi</th><th>DRC</th><th>Killed by unknown assailants</th></tr>
+			<tr><th>James Marvin Wallen Jr</th><th>USA</th><th>Died from earlier injuries</th></tr>
+			<tr><th>Sieng Darong</th><th>Cambodia</th><th>Shot by timber poachers</th></tr>
+			<tr><th>Lkhagvasumberel Tumursukh</th><th>Mongolia</th><th>Suspicious death</th></tr>
+			<tr><th>Someswar Borah</th><th>India</th><th>Drowned</th></tr>
+			<tr><th>Ananta Boro</th><th>India</th><th>Killed by elephant</th></tr>
+			<tr><th>Basavan</th><th>India</th><th>Killed by wildlife</th></tr>
+			<tr><th>Un-named South</th><th>Sudan</th><th>Killed by herders</th></tr>
+			<tr><th>Emily Stephen Kisamo</th><th>Tanzania</th><th>Suspicious death</th></tr>
+			<tr><th>Subhash Uike</th><th>India</th><th>Traffic accident</th></tr>
+			<tr><th>Rinku</th><th>India</th><th>Killedbyfalling tree</th></tr>
+			<tr><th>Patrick Lane</th><th>SouthAfrica</th><th>On-duty vehicle accident</th></tr>
+			<tr><th>Enos Mabila</th><th>SouthAfrica</th><th>Friendly fire</th></tr>
+			<tr><th>Baikswar GirdhariRamBanjara</th><th>India</th><th>On-duty road accident</th></tr>
+			<tr><th>Sebinyenzi Bavukirahe Yacinthe</th><th>DRC</th><th>Shot in FDLR ambush</th></tr>
+			<tr><th>Roger Gower</th><th>Tanzania</th><th>Shot & died in helicopter crash</th></tr>
+			<tr><th>Safiqual Islam</th><th>India</th><th>Killed by rhino</th></tr>
+			<tr><th>Anil Deka</th><th>India</th><th>No details</th></tr>
+			<tr><th>Kamal Singh</th><th>India</th><th>Killed by timber smugglers</th></tr>
+			<tr><th>Rudy Solis</th><th>Nicaragua</th><th>Shot by persons unknown</th></tr>
+			<tr><th>Wasim Ali</th><th>India</th><th>On-duty road accident</th></tr>
+			<tr><th>Aliyu Zakari</th><th>Nigeria</th><th>Killed by poachers</th></tr>
+			<tr><th>Wazir Zada</th><th>Pakistan</th><th>Killed inland dispute</th></tr>
+			<tr><th>Narendra Sharma</th><th>India</th><th>Killed in sand mafia incident</th></tr>
+			<tr><th>Christopher Fisher</th><th>Honduras</th><th>Suspicious death</th></tr>
+			<tr><th>Sahil Khan</th><th>India</th><th>Killed by sloth bear</th></tr>
+			<tr><th>Fidèle Mulonga Mulegalega</th><th>DRC</th><th>Killed by Mai Mai</th></tr>
+			<tr><th>Venant Mumbere Muvesevese</th><th>DRC</th><th>Killed by Mai Mai</th></tr>
+			<tr><th>Justin Magombo</th><th>DRC</th><th>Killed by Mai Mai</th></tr>
+			<tr><th>Sidheshwar Singh</th><th>India</th><th>Killed by timber mafia</th></tr>
+			<tr><th>Claudio Chiarelli</th><th>Zimbabwe</th><th>Friendly fire incident</th></tr>
+			<tr><th>Massimiliano “Max” Chiarelli</th><th>Zimbabwe</th><th>Friendly fire incident</th></tr>
+			<tr><th>Krishna Pal Singh</th><th>India</th><th>Killed by tiger</th></tr>
+			<tr><th>Keith Campbell</th><th>Trinidad</th><th>Killed fighting a bush fire</th></tr>
+			<tr><th>Kennedy Zvavahera</th><th>Zimbabwe</th><th>Found dead in park</th></tr>
+			<tr><th>Un-named</th><th>China</th><th>Trapped by fire</th></tr>
+			<tr><th>Un-named</th><th>China</th><th>Trapped by fire</th></tr>
+			<tr><th>Somarajan</th><th>India</th><th>On-duty road accident</th></tr>
+			<tr><th>Sheik Baji Sahid</th><th>India</th><th>Axed to death by timber poachers</th></tr>
+			<tr><th>Dadli Lazar</th><th>India</th><th>Axed to death by timber poachers</th></tr>
+			<tr><th>Hari Ram</th><th>India</th><th>Killed by tiger</th></tr>
+			<tr><th>Oleg Prodan</th><th>Russia</th><th>Killed in helicopter crash</th></tr>
+			<tr><th>Ravi Kumar</th><th>India</th><th>Died during training run</th></tr>
+			<tr><th>Richard Sungudikpio Ndingba</th><th>DRC</th><th>Killed by elephant poachers</th></tr>
+			<tr><th>Rigobert Anigobe Bagale</th><th>DRC</th><th>Killed by elephant poachers</th></tr>
+			<tr><th>Dieudonné Tsago Matikuli</th><th>DRC</th><th>Killed by elephant poachers</th></tr>
+			<tr><th>Kanagaraj</th><th>India</th><th>Killed by elephant</th></tr>
+			<tr><th>Upendra Singh Sengar</th><th>India</th><th>Cardiac arrest while training</th></tr>
+			<tr><th>Munna Chaudhry</th><th>Bhutan</th><th>Killed by elephant</th></tr>
+			<tr><th>Bijendra Jatav</th><th>India</th><th>Electrocuted</th></tr>
+			<tr><th>Chait Singh</th><th>India</th><th>Suffocated in forest fire</th></tr>
+			<tr><th>Lee Lynnes</th><th>USA</th><th>Grass mower accident</th></tr>
+			<tr><th>K. Madhavan Pillai</th><th>India</th><th>Gored to death by spotted deer</th></tr>
+			<tr><th>Veer Singh</th><th>India</th><th>Trampled to death by elephants</th></tr>
+			<tr><th>Pankaj Kumar</th><th>India</th><th>Trampled to death by elephants</th></tr>
+			<tr><th>Manohar Singh Rawat</th><th>India</th><th>Shot dead whilst on night patrol</th></tr>
+			<tr><th>Wizani Baloyi</th><th>SouthAfrica</th><th>Killed by rhino poachers</th></tr>
+			<tr><th>Mohammad Dehghani</th><th>Iran</th><th>Shot by poachers</th></tr>
+			<tr><th>Parviz Hormozi</th><th>Iran</th><th>Shot by poachers</th></tr>
+			<tr><th>Manouchehr Shojaei</th><th>Iran</th><th>Shot by poachers/thrownfromcliff</th></tr>
+			<tr><th>Taskeel Mohammad</th><th>Pakistan</th><th>Shot in personal feud</th></tr>
+			<tr><th>Jagath Seneviratne</th><th>SriLanka</th><th>Weapon misfired during arrest</th></tr>
+			<tr><th>Le Dinh Tue</th><th>Vietnam</th><th>Stabbed by poacher</th></tr>
+			<tr><th>Madubeko Ngwenya</th><th>Zimbabwe</th><th>Drowned when hippo attacked canoe</th></tr>
+			<tr><th>Jacob O’ Malley</th><th>USA(BLM)</th><th>Firetruck crashed on patrol</th></tr>
+			<tr><th>Will Hawkins</th><th>USA(BLM)</th><th>Firetruck crashed on patrol</th></tr>
+			<tr><th>Bancherd Leurdanon</th><th>Thailand</th><th>Heart attack while on patrol</th></tr>
+			<tr><th>Yothin Boonwong</th><th>Thailand</th><th>Fatal bacterial infection</th></tr>
+			<tr><th>Anucha Chiengkruea</th><th>Thailand</th><th>Killed by a landmine</th></tr>
+			<tr><th>Samart Sriboonrin</th><th>Thailand</th><th>Killed by an elephant</th></tr>
+			<tr><th>Chawalit Injamnong</th><th>Thailand</th><th>Car accident</th></tr>
+			<tr><th>Sophon Kaengkan</th><th>Thailand</th><th>Drowned</th></tr>
+			<tr><th>Prasit Khummoo</th><th>Thailand</th><th>Shot by poachers</th></tr>
+			<tr><th>Wieng Ploykuntod</th><th>Thailand</th><th>Killed by fever on patrol</th></tr>
+			<tr><th>Paiwan Kitpitak</th><th>Thailand</th><th>Smoke inhalation</th></tr>
+			<tr><th>Phaichit Mookjeen</th><th>Thailand</th><th>Killed by an elephant</th></tr>
+			<tr><th>Ratana Benchamopong</th><th>Thailand</th><th>Killed by an elephant</th></tr>
+			<tr><th>Lmeyiouni Lemoyog</th><th>Kenya</th><th>Killed on patrol by cattle rustlers</th></tr>
+			<tr><th>Koyiaso Lekoloi</th><th>Kenya</th><th>Shot in poacher ambush</th></tr>
+			<tr><th>Name currently unknown</th><th>Thailand</th><th>Shot by Illegal loggers</th></tr>
+			<tr><th>Name currently unknown</th><th>Thailand</th><th>Killed by Elephant</th></tr>
+			<tr><th>Alberto Curiñaupa Flores</th><th>Peru</th><th>Explosion</th></tr>
+			<tr><th>Oscar Byamungu Myaziro</th><th>DRC</th><th>Killed by rebels</th></tr>
+			<tr><th>Jirawuth Prompetch</th><th>Thailand</th><th>Died in Car Accident on Duty</th></tr>
+			<tr><th>Raghavan</th><th>India</th><th>Killed by elephant</th></tr>
+			<tr><th>Alexde Brito</th><th>CapeVerde</th><th>Electrocuted</th></tr>
+			<tr><th>Dwipen Baruah</th><th>India</th><th>Patrol boat capsized</th></tr>
+			<tr><th>Krishna Kumar</th><th>India</th><th>RTA whilst on-duty</th></tr>
+			<tr><th>Chandreshwar Singh</th><th>India</th><th>RTA whilst on-duty</th></tr>
+			<tr><th>Narinder Kumar</th><th>India</th><th>suspicious death</th></tr>
+			<tr><th>Emmanuel Mughogho</th><th>Malawi</th><th>Killed by buffalo</th></tr>
+			<tr><th>Karo Tayem</th><th>India</th><th>Killed by elephant</th></tr>
+			<tr><th>TRama Krishna</th><th>India</th><th>on-duty accident</th></tr>
+			<tr><th>Sanjeewa</th><th>SriLanka</th><th>Killed by elephant</th></tr>
+			<tr><th>Mohammad Akram</th><th>Pakistan</th><th>Beheaded by timber poachers</th></tr>
+			<tr><th>Razi Rehman</th><th>Pakistan</th><th>Killed by persons unknown</th></tr>
+			<tr><th>Élfido David Guardado Ponce</th><th>Guatemala</th><th>Killed by timber mafia</th></tr>
+			<tr><th>Orville “Bubba” Timberlake</th><th>USA</th><th>Killed clearing storm damage</th></tr>
+			<tr><th>Ranger Lumbga</th><th>Kenya</th><th>Died of wounds</th></tr>
+			<tr><th>Durjan Singh Yadav</th><th></th><th>India</th><th>Drowned on-duty</th></tr>
+			<tr><th>Yamis Marko</th><th>SouthSudan</th><th>Shot by army</th></tr>
+			<tr><th>James Kaika</th><th>Kenya</th><th>Crushed by pole on-duty</th></tr>
+		</table>
+	<p>UNKOWN RANGER–Representing all those not reported to date</p>
 	</div>
 </body>
 </html>

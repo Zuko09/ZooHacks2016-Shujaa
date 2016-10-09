@@ -2,14 +2,15 @@
 window.shujaa = window.shujaa || {};
 
 (function (){
-    function Poacher (game, name, x, y) {
+    function Poacher (game, config) {
         this._game = game;
-        this._name = name;
+        this._name = config.name;
+        if (config.imageUrl) {
+            this._image = new Image();
+            this._image.src = config.imageUrl;
+        }
 
-        this.initMoverMixin(game, 10);
-
-        this.setPosition(x, y);
-        this.setDestination(x, y);
+        this.initMoverMixin(game, 7, config.script);
     }
 
     jQuery.extend(Poacher.prototype, jQuery.eventEmitter);
