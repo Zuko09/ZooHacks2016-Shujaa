@@ -46,6 +46,7 @@ window.shujaa = window.shujaa || {};
         }],
         poachers: [{
             name: 'poacher',
+            imageUrl: 'images/poacher.png',
             script: [
                 {time: 0, event: 'setPosition', dest: [297, 388]},
                 {time: 0, event: 'setDestination', dest: [314, 384]},
