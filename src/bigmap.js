@@ -28,11 +28,12 @@ window.shujaa = window.shujaa || {};
     };
 
     BigMap.prototype.onClick = function (mouseEvent) {
-        console.log('bigmap onclick:', arguments);
+        var matrix = this._ctx.getTransform().inverse();
 
-        console.log('transform:',this._ctx.getTransform());
+        var clickX = mouseEvent.x * matrix.a + mouseEvent.y * matrix.b + matrix.e;
+        var clickY = mouseEvent.x * matrix.c + mouseEvent.y * matrix.d + matrix.f;
 
-        this._game.emit('!setDestination', {x: data.x, y: data.y});
+        this._game.emit('!setDestination', {x: clickX, y: clickY});
     };
 
     jQuery.extend(BigMap.prototype, window.shujaa.MapMixin);

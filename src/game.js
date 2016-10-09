@@ -28,6 +28,8 @@ window.shujaa = window.shujaa || {};
 
         this._updateInterval = setInterval(this.update.bind(this), 1000 / 60);
 
+        this._player.setPosition(this._bigmap._mapImage.width / 2, this._bigmap._mapImage.height / 2);
+
         this.emit('!start');
     };
 

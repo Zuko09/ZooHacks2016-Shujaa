@@ -6,14 +6,23 @@ window.shujaa = window.shujaa || {};
 
     Player = function (game) {
         this._game = game;
+        this._x = 0;
+        this._y = 0;
 
         game.on('!update', this.onUpdate.bind(this));
+        game.on('!setDestination', this.onSetDestination.bind(this));
     };
 
     Player.prototype.onUpdate = function (event, data) {
-        var t = data.now / 1000;
-        this._x = 100 + 100 * Math.cos(t);
-        this._y = 200 + 100 * Math.sin(t);
+    };
+
+    Player.prototype.onSetDestination = function (event, data) {
+        this.setPosition(data.x, data.y);
+    };
+
+    Player.prototype.setPosition = function (x, y) {
+        this._x = x;
+        this._y = y;
         this._game.emit('!playerMoved', {x: this._x, y: this._y});
     };
 
