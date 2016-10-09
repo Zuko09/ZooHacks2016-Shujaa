@@ -4,15 +4,17 @@ window.shujaa = window.shujaa || {};
 (function (){
     // host must also mix in jQuery.eventEmitter or equivalent
     window.shujaa.MoverMixin = {
-        initMoverMixin: function(game, speedMph) {
+        initMoverMixin: function(game, speedMph, script) {
             // pixels per second
             this._speed = speedMph / 60 / 60 * game.pixelsPerMile;
             this._position = this._position || [0,0];
             this._destination = this._destination || [0,0];
+            this._script = script;
 
             game.on('!update', this.onUpdate.bind(this));
         },
         onUpdate: function (event, data) {
+            this.processScript(data.now);
             var offset = [
                 this._destination[0] - this._position[0],
                 this._destination[1] - this._position[1]
@@ -27,6 +29,23 @@ window.shujaa = window.shujaa || {};
             else if (distance > 0) {
                 this.setPosition(this._destination[0], this._destination[1]);
                 this.emit('!arrived', {x: this._destination[0], y: this._destination[1]});
+            }
+        },
+        processScript: function (nowTime) {
+            while (this._script && this._script.length && nowTime >= this._script[0].time) {
+                var item = this._script[0];
+                this._script.shift();
+
+                console.log(this._name,': ', item);
+
+                switch(item.event) {
+                case 'setPosition':
+                    this.setPosition(item.dest[0], item.dest[1]);
+                    break;
+                case 'setDestination':
+                    this.setDestination(item.dest[0], item.dest[1]);
+                    break;
+                }
             }
         },
         setDestination: function (x, y) {

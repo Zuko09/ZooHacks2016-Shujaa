@@ -32,7 +32,7 @@ window.shujaa = window.shujaa || {};
         count = this._gameConfig.rangers.length;
         for (i = 0; i < count; ++i) {
             item = this._gameConfig.rangers[i];
-            this._rangers.push(new window.shujaa.Ranger(this, item.name, item.position[0], item.position[1]));
+            this._rangers.push(new window.shujaa.Ranger(this, item.name, item.script));
         }
 
         count = this._gameConfig.animals.length;
