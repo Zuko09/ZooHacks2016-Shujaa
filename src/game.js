@@ -62,6 +62,45 @@ window.shujaa = window.shujaa || {};
         this._lastTime = now;
 
         this.emit('!update', {now: now / 1000, deltaTime: deltaTime / 1000});
+
+        var interactionRange = 2;
+        var animalIndex, poacherIndex;
+        var animal, poacher;
+
+        function distance(mover1, mover2) {
+            var offset = [
+                mover2._position[0] - mover1._position[0],
+                mover2._position[1] - mover1._position[1],
+            ];
+            offset[0] *= offset[0];
+            offset[1] *= offset[1];
+            return Math.sqrt(offset[0] + offset[1]);
+        }
+
+        for (poacherIndex = 0; poacherIndex < this._poachers.length; ++poacherIndex) {
+            poacher = this._poachers[poacherIndex];
+            if (distance(this._player, poacher) <= interactionRange) {
+                // TODO: you win
+                poacher.dead = true;
+                console.log('player caught poacher');
+            }
+        }
+
+        this._poachers = this._poachers.filter(function(p) {return !p.dead});
+
+        for (animalIndex = 0; animalIndex < this._animals.length; ++animalIndex) {
+            animal = this._animals[animalIndex];
+            for (poacherIndex = 0; poacherIndex < this._poachers.length; ++poacherIndex) {
+                poacher = this._poachers[poacherIndex];
+                if (distance(animal, poacher) < interactionRange) {
+                    // TODO: you lose
+                    animal.dead = true;
+                    console.log('poacher caught animal');
+                }
+            }
+        }
+
+        this._animals = this._animals.filter(function(a) { return !a.dead; });
     };
 
     jQuery.extend(Game.prototype, jQuery.eventEmitter);
