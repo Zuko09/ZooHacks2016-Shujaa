@@ -31,6 +31,22 @@
 			window.shujaa.game.start();
             $('#names-table-table').addClass('.credit-animation');
 		}
+        function changePage(id) {
+            $('body').children().hide();
+            $('body').children('#'+id).show();
+            if (id == 'main-view') {
+                window.shujaa.game.start();
+            }
+        }
+
+		window.shujaa.onAnimalCaught = function(animalName) {
+			console.log('a poacher caught an animal:', animalName);
+			console.log('the game will now end.');
+		};
+		window.shujaa.onPoacherCaught = function() {
+			console.log('the user caught a poacher');
+			console.log('the game will now end.');
+		};
     </script>
     <style type="text/css">
         #names-table-table {
@@ -59,156 +75,214 @@
 <body id="myPage">
 	<!-- Image Header -->
 	<div id="start-view" class="display-container display-topleft start-format" ng-show="showingStartView">
-		<img src="Wallpaper2.jpg" alt="Rhino" width="100%">
+		<img src="wallpaper2.jpg" alt="Rhino" width="100%">
 		<div class="container" style="position:absolute;left:40%;bottom:58%;center;">
 			<h1 style="font-size:64px;color:white;">Shujaa</h1>
 		</div>
 		<div class="container" style="position:absolute;left:43%;bottom:53%;center;">
-			<button onclick="hideStartView()" class="btn large yellowGreen yellowGreen-hover btn-format" title="Start"><b>Start</b></button>
+			<button onclick="changePage('main-view')" class="btn large yellowGreen yellowGreen-hover btn-format" title="Start"><b>Start</b></button>
 		</div>
 	</div>
 
 	<div id="main-view" class="container display-topleft main-format"  ng-show="showingMainView">
 		<canvas id="bigMap" width="1024" height="768"></canvas>
-	</div>
+        <div id="chatlog-view" class="container display-bottommiddle chatlog-format">
+            <div class=".msg">AISHA, CAPTAIN FRANCIS, KWESI, and new recruit DESMOND are in a jeep traversing the Virunga southern boundary. CAPT FRANCIS slows as he spots something on the ground, stops the jeep.<SUPERIMPOSE> YOU ARE DESMOND, A NEW RECRUIT TO THE VIRUNGA RANGER CORPS. FRANCIS, KWESI AND AISHA WHILE TRAINING YOU, LEAD YOU ON A BUSH INVESTIGATION FRANCIS    Desmond, can you tell us what this is?</div>
 
-	<div id="chatlog-view"class="container display-bottommiddle chatlog-format" ng-show="showingChatlogView">
-		
-	</div>
+            <div class=".msg"><show image of woven quiver>DESMOND    That is a quiver, for arrows. Probably poisoned ones.</div>
 
-	<div id="minimap-view" class="container display-topright minimap-format" ng-show="showingMinimapView">
-		<canvas id="miniMap" width="200" height="200"></canvas>
+            <div class=".msg">KWESI        And there are no arrows, so they were probably all used.</div>
+
+            <div class=".msg">AISHA    Which means we may find some bad news soon...</div>
+
+            <div class=".msg">CAPT FRANCIS Kwesi, take Desmond and explore the bank, to the south. Aisha and I will go north. We will radio you if we find anything. <Superimpose> DESMOND and KWESI WALK ALONG RIVER BANK, CAREFUL TO KEEP DISTANCE DUE TO THE MANY HIPPOS. DESMOND     Do you think we may have a chance to save the elephant?</div>
+
+            <div class=".msg">KWESI        We must try.  </div>
+
+            <div class=".msg">You have to look for the foot-marks... You will have an idea of which animal is roaming in that location.</div>
+
+            <div class=".msg">DESMOND    Is it true the poachers tried to assassinate the warden again?</div>
+
+            <div class=".msg">KWESI     Warden de Merode, yes. He survived. They shot him in a roadside ambush.</div>
+
+            <div class=".msg">DESMOND    It is like a war that never ends. They destroy the animals, but they target us as well.</div>
+
+            <div class=".msg">KWESI     This is our Virunga, our forest. When I see what these poachers do, I think they are monsters. To poision a watering hole with cyanide, and to kill all the animals that drink from there, just to get 8 tusks... It is worth the fight. Cut to</div>
+
+            <div class=".msg">AISHA with CAPT FRANCIS</div>
+
+            <div class=".msg">AISHA    Looks like there is a lion who has been limping... perhaps a thorn in her paw.</div>
+
+            <div class=".msg">CAPT FRANCIS     I hope she is better before mating season. She had a lot of cubs last year.</div>
+
+            <div class=".msg">AISHA    If it doesn't heal soon we can tranquilize her to help her.</div>
+
+            <div class=".msg"><AISHA Stops ></div>
+
+            <div class=".msg">AISHA Here is a broken bottle, and lizard skin.</div>
+
+            <div class=".msg">CAPT FRANCIS Ah, this is where they camped. <looks up>  Kutisha!<superimpose></div>
+
+            <div class=".msg">AISHA and  CAPT FRANCIS see an elephant on the horizon. It is wounded, with two arrows in its haunches, and wounds from other arrows that did not stick. CAPT FRANCIS <via radio>    Kwesi, we have found a wounded tembo... she is staggering. Return to our position please.</div>
+
+            <div class=".msg">KWESI <on radio to Captain> Aye aye, we will be there in fifteen minutes.</div>
+
+
+
+            <div class=".msg">KWESI <to Desmond>    Have you been in helicopter, my friend?</div>
+
+            <div class=".msg">DESMOND    Only once for training.</div>
+
+            <div class=".msg">KWESI     I once had to do a helo search for wounded. We followed tracks in the tall grass until we found an adult rhino, in distress. Her calf and another young rhino were nearby. We hovered above checking for bullet wounds, she stumbled away and collapsed. Blood was gushing out of her nostrils and mouth. We watched her die in front of us....</div>
+
+            <div class=".msg">DESMOND    How do you keep going?</div>
+
+            <div class=".msg">KWESI    My father was a ranger for 34 years.</div>
+
+            <div class=".msg">DESMOND I joined because of the debt my family owes Ranger Sebinyenzi. He was only 40 years old and had been protecting Virunga for over 20 years. 8 kids. I want to make sure he did not die in vain.<superimpose></div>
+
+            <div class=".msg">KWESI and DESMOND proceed through the brush towards their comrades. Two poachers, who had been hiding from Capt Francis and Aisha, jump out from behind an anthill with weapons drawn.KWESI fires his weapon above their heads, they drop their rifles and give up.</div>
+
+            <div class=".msg">KWESI Desmond, radio the others.</div>
+
+            <div class=".msg"><superimpose></div>
+
+            <div class=".msg">CAPT FRANCIS and AISHA return. The three experienced rangers arrest the two poachers. CAPT FRANCIS Call the base, Aisha, we need to get medical care to her.</div>
+        </div>
+
+        <div id="minimap-view" class="container display-topright minimap-format" ng-show="showingMinimapView">
+            <canvas id="miniMap" width="200" height="200"></canvas>
+        </div>
 	</div>
 	<div id="names-table" class="container" ng-show="namesList" style="margin-right:200px;">
-	<div style="position:absolute; left:40%; top:5%; font-size:68px;">
-		<div style="width:100%;" id='names-wrapper'>
-			<div><b>Ramaiah -- India -- Trampled by elephant</b></div>
-			<div><b>Naba Krishna Mahanta -- India -- On-duty road accident</b></div>
-			<div><b>David Ruhl -- USA -- Died firefighting</b></div>
-			<div><b>Michael Hallenbeck -- USA -- Struck by tree firefighting</b></div>
-			<div><b>Easter Ishara Birindwa -- DRC -- Killed by Mai Mai</b></div>
-			<div><b>Hooshang Naderi -- Iran -- On-duty road accident</b></div>
-			<div><b>Ram Swaroop Yadav -- India -- Killed by villagers</b></div>
-			<div><b>Richard Wheeler -- USA -- Died firefighting</b></div>
-			<div><b>Andrew Zajac -- USA -- Died firefighting</b></div>
-			<div><b>Tom Zbyszewski -- USA -- Died firefighting</b></div>
-			<div><b>Robert Amadra -- Uganda -- Killed by poacher</b></div>
-			<div><b>Tafadzwa Gosho -- Zimbabwe -- Killed by rhino</b></div>
-			<div><b>Arman Seitkazinov -- Kazakhstan -- Friendly fire</b></div>
-			<div><b>P. Muthusamy -- India -- Trampled by elephant</b></div>
-			<tr><th>Hon. Ranger - Elephant “Yongki” Indonesia</th><th>Killed by ivory poachers</th></tr>
-			<div><b>Angad Kumar -- India -- On-duty road accident</b></div>
-			<div><b>Ratan Arjun -- Bhutan -- Died from exposure</b></div>
-			<div><b>Djuma AdaluUweko -- DRC -- Killed by elephant poachers</b></div>
-			<div><b>Andre Gada Migifuloyo -- DRC -- Killed by elephant poachers</b></div>
-			<div><b>Anselme Kimbesa Muhindo -- DRC -- Killed by elephant poachers</b></div>
-			<div><b>Prasit Khummoo -- Thailand -- Killed by timber poachers</b></div>
-			<div><b>Vijay Bahadur -- India -- Suspicious death</b></div>
-			<div><b>Yao Zheng Yang -- China -- Trampled by wild elephants</b></div>
-			<div><b>Jean Claude Kiza Vunabandi -- DRC -- Killed by unknown assailants</b></div>
-			<div><b>James Marvin Wallen Jr -- USA -- Died from earlier injuries</b></div>
-			<div><b>Sieng Darong -- Cambodia -- Shot by timber poachers</b></div>
-			<div><b>Lkhagvasumberel Tumursukh -- Mongolia -- Suspicious death</b></div>
-			<div><b>Someswar Borah -- India -- Drowned</b></div>
-			<div><b>Ananta Boro -- India -- Killed by elephant</b></div>
-			<div><b>Basavan -- India -- Killed by wildlife</b></div>
-			<div><b>Un-named South -- Sudan -- Killed by herders</b></div>
-			<div><b>Emily Stephen Kisamo -- Tanzania -- Suspicious death</b></div>
-			<div><b>Subhash Uike -- India -- Traffic accident</b></div>
-			<div><b>Rinku -- India -- Killedbyfalling tree</b></div>
-			<div><b>Patrick Lane -- SouthAfrica -- On-duty vehicle accident</b></div>
-			<div><b>Enos Mabila -- SouthAfrica -- Friendly fire</b></div>
-			<div><b>Baikswar GirdhariRamBanjara -- India -- On-duty road accident</b></div>
-			<div><b>Sebinyenzi Bavukirahe Yacinthe -- DRC -- Shot in FDLR ambush</b></div>
-			<div><b>Roger Gower -- Tanzania -- Shot & died in helicopter crash</b></div>
-			<div><b>Safiqual Islam -- India -- Killed by rhino</b></div>
-			<div><b>Anil Deka -- India -- No details</b></div>
-			<div><b>Kamal Singh -- India -- Killed by timber smugglers</b></div>
-			<div><b>Rudy Solis -- Nicaragua -- Shot by persons unknown</b></div>
-			<div><b>Wasim Ali -- India -- On-duty road accident</b></div>
-			<div><b>Aliyu Zakari -- Nigeria -- Killed by poachers</b></div>
-			<div><b>Wazir Zada -- Pakistan -- Killed inland dispute</b></div>
-			<div><b>Narendra Sharma -- India -- Killed in sand mafia incident</b></div>
-			<div><b>Christopher Fisher -- Honduras -- Suspicious death</b></div>
-			<div><b>Sahil Khan -- India -- Killed by sloth bear</b></div>
-			<div><b>Fidèle Mulonga Mulegalega -- DRC -- Killed by Mai Mai</b></div>
-			<div><b>Venant Mumbere Muvesevese -- DRC -- Killed by Mai Mai</b></div>
-			<div><b>Justin Magombo -- DRC -- Killed by Mai Mai</b></div>
-			<div><b>Sidheshwar Singh -- India -- Killed by timber mafia</b></div>
-			<div><b>Claudio Chiarelli -- Zimbabwe -- Friendly fire incident</b></div>
-			<div><b>Massimiliano “Max” Chiarelli -- Zimbabwe -- Friendly fire incident</b></div>
-			<div><b>Krishna Pal Singh -- India -- Killed by tiger</b></div>
-			<div><b>Keith Campbell -- Trinidad -- Killed fighting a bush fire</b></div>
-			<div><b>Kennedy Zvavahera -- Zimbabwe -- Found dead in park</b></div>
-			<div><b>Un-named -- China -- Trapped by fire</b></div>
-			<div><b>Un-named -- China -- Trapped by fire</b></div>
-			<div><b>Somarajan -- India -- On-duty road accident</b></div>
-			<div><b>Sheik Baji Sahid -- India -- Axed to death by timber poachers</b></div>
-			<div><b>Dadli Lazar -- India -- Axed to death by timber poachers</b></div>
-			<div><b>Hari Ram -- India -- Killed by tiger</b></div>
-			<div><b>Oleg Prodan -- Russia -- Killed in helicopter crash</b></div>
-			<div><b>Ravi Kumar -- India -- Died during training run</b></div>
-			<div><b>Richard Sungudikpio Ndingba -- DRC -- Killed by elephant poachers</b></div>
-			<div><b>Rigobert Anigobe Bagale -- DRC -- Killed by elephant poachers</b></div>
-			<div><b>Dieudonné Tsago Matikuli -- DRC -- Killed by elephant poachers</b></div>
-			<div><b>Kanagaraj -- India -- Killed by elephant</b></div>
-			<div><b>Upendra Singh Sengar -- India -- Cardiac arrest while training</b></div>
-			<div><b>Munna Chaudhry -- Bhutan -- Killed by elephant</b></div>
-			<div><b>Bijendra Jatav -- India -- Electrocuted</b></div>
-			<div><b>Chait Singh -- India -- Suffocated in forest fire</b></div>
-			<div><b>Lee Lynnes -- USA -- Grass mower accident</b></div>
-			<div><b>K. Madhavan Pillai -- India -- Gored to death by spotted deer</b></div>
-			<div><b>Veer Singh -- India -- Trampled to death by elephants</b></div>
-			<div><b>Pankaj Kumar -- India -- Trampled to death by elephants</b></div>
-			<div><b>Manohar Singh Rawat -- India -- Shot dead whilst on night patrol</b></div>
-			<div><b>Wizani Baloyi -- SouthAfrica -- Killed by rhino poachers</b></div>
-			<div><b>Mohammad Dehghani -- Iran -- Shot by poachers</b></div>
-			<div><b>Parviz Hormozi -- Iran -- Shot by poachers</b></div>
-			<div><b>Manouchehr Shojaei -- Iran -- Shot by poachers/thrownfromcliff</b></div>
-			<div><b>Taskeel Mohammad -- Pakistan -- Shot in personal feud</b></div>
-			<div><b>Jagath Seneviratne -- SriLanka -- Weapon misfired during arrest</b></div>
-			<div><b>Le Dinh Tue -- Vietnam -- Stabbed by poacher</b></div>
-			<div><b>Madubeko Ngwenya -- Zimbabwe -- Drowned when hippo attacked canoe</b></div>
-			<div><b>Jacob O’ Malley -- USA(BLM) -- Firetruck crashed on patrol</b></div>
-			<div><b>Will Hawkins -- USA(BLM) -- Firetruck crashed on patrol</b></div>
-			<div><b>Bancherd Leurdanon -- Thailand -- Heart attack while on patrol</b></div>
-			<div><b>Yothin Boonwong -- Thailand -- Fatal bacterial infection</b></div>
-			<div><b>Anucha Chiengkruea -- Thailand -- Killed by a landmine</b></div>
-			<div><b>Samart Sriboonrin -- Thailand -- Killed by an elephant</b></div>
-			<div><b>Chawalit Injamnong -- Thailand -- Car accident</b></div>
-			<div><b>Sophon Kaengkan -- Thailand -- Drowned</b></div>
-			<div><b>Prasit Khummoo -- Thailand -- Shot by poachers</b></div>
-			<div><b>Wieng Ploykuntod -- Thailand -- Killed by fever on patrol</b></div>
-			<div><b>Paiwan Kitpitak -- Thailand -- Smoke inhalation</b></div>
-			<div><b>Phaichit Mookjeen -- Thailand -- Killed by an elephant</b></div>
-			<div><b>Ratana Benchamopong -- Thailand -- Killed by an elephant</b></div>
-			<div><b>Lmeyiouni Lemoyog -- Kenya -- Killed on patrol by cattle rustlers</b></div>
-			<div><b>Koyiaso Lekoloi -- Kenya -- Shot in poacher ambush</b></div>
-			<div><b>Name currently unknown -- Thailand -- Shot by Illegal loggers</b></div>
-			<div><b>Name currently unknown -- Thailand -- Killed by Elephant</b></div>
-			<div><b>Alberto Curiñaupa Flores -- Peru -- Explosion</b></div>
-			<div><b>Oscar Byamungu Myaziro -- DRC -- Killed by rebels</b></div>
-			<div><b>Jirawuth Prompetch -- Thailand -- Died in Car Accident on Duty</b></div>
-			<div><b>Raghavan -- India -- Killed by elephant</b></div>
-			<div><b>Alexde Brito -- CapeVerde -- Electrocuted</b></div>
-			<div><b>Dwipen Baruah -- India -- Patrol boat capsized</b></div>
-			<div><b>Krishna Kumar -- India -- RTA whilst on-duty</b></div>
-			<div><b>Chandreshwar Singh -- India -- RTA whilst on-duty</b></div>
-			<div><b>Narinder Kumar -- India -- suspicious death</b></div>
-			<div><b>Emmanuel Mughogho -- Malawi -- Killed by buffalo</b></div>
-			<div><b>Karo Tayem -- India -- Killed by elephant</b></div>
-			<div><b>TRama Krishna -- India -- on-duty accident</b></div>
-			<div><b>Sanjeewa -- SriLanka -- Killed by elephant</b></div>
-			<div><b>Mohammad Akram -- Pakistan -- Beheaded by timber poachers</b></div>
-			<div><b>Razi Rehman -- Pakistan -- Killed by persons unknown</b></div>
-			<div><b>Élfido David Guardado Ponce -- Guatemala -- Killed by timber mafia</b></div>
-			<div><b>Orville “Bubba” Timberlake -- USA -- Killed clearing storm damage</b></div>
-			<div><b>Ranger Lumbga -- Kenya -- Died of wounds</b></div>
-			<div><b>Durjan Singh Yadav</th><th> -- India -- Drowned on-duty</b></div>
-			<div><b>Yamis Marko -- SouthSudan -- Shot by army</b></div>
-			<div><b>James Kaika -- Kenya -- Crushed by pole on-duty</b></div>
-		</div>
-	    <p>UNKOWN RANGER–Representing all those not reported to date</p>
-	</div>
+        <div style="width:100%;" id='names-wrapper'>
+            <div><b>Ramaiah -- India -- Trampled by elephant</b></div>
+            <div><b>Naba Krishna Mahanta -- India -- On-duty road accident</b></div>
+            <div><b>David Ruhl -- USA -- Died firefighting</b></div>
+            <div><b>Michael Hallenbeck -- USA -- Struck by tree firefighting</b></div>
+            <div><b>Easter Ishara Birindwa -- DRC -- Killed by Mai Mai</b></div>
+            <div><b>Hooshang Naderi -- Iran -- On-duty road accident</b></div>
+            <div><b>Ram Swaroop Yadav -- India -- Killed by villagers</b></div>
+            <div><b>Richard Wheeler -- USA -- Died firefighting</b></div>
+            <div><b>Andrew Zajac -- USA -- Died firefighting</b></div>
+            <div><b>Tom Zbyszewski -- USA -- Died firefighting</b></div>
+            <div><b>Robert Amadra -- Uganda -- Killed by poacher</b></div>
+            <div><b>Tafadzwa Gosho -- Zimbabwe -- Killed by rhino</b></div>
+            <div><b>Arman Seitkazinov -- Kazakhstan -- Friendly fire</b></div>
+            <div><b>P. Muthusamy -- India -- Trampled by elephant</b></div>
+            <tr><th>Hon. Ranger - Elephant “Yongki” Indonesia</th><th>Killed by ivory poachers</th></tr>
+            <div><b>Angad Kumar -- India -- On-duty road accident</b></div>
+            <div><b>Ratan Arjun -- Bhutan -- Died from exposure</b></div>
+            <div><b>Djuma AdaluUweko -- DRC -- Killed by elephant poachers</b></div>
+            <div><b>Andre Gada Migifuloyo -- DRC -- Killed by elephant poachers</b></div>
+            <div><b>Anselme Kimbesa Muhindo -- DRC -- Killed by elephant poachers</b></div>
+            <div><b>Prasit Khummoo -- Thailand -- Killed by timber poachers</b></div>
+            <div><b>Vijay Bahadur -- India -- Suspicious death</b></div>
+            <div><b>Yao Zheng Yang -- China -- Trampled by wild elephants</b></div>
+            <div><b>Jean Claude Kiza Vunabandi -- DRC -- Killed by unknown assailants</b></div>
+            <div><b>James Marvin Wallen Jr -- USA -- Died from earlier injuries</b></div>
+            <div><b>Sieng Darong -- Cambodia -- Shot by timber poachers</b></div>
+            <div><b>Lkhagvasumberel Tumursukh -- Mongolia -- Suspicious death</b></div>
+            <div><b>Someswar Borah -- India -- Drowned</b></div>
+            <div><b>Ananta Boro -- India -- Killed by elephant</b></div>
+            <div><b>Basavan -- India -- Killed by wildlife</b></div>
+            <div><b>Un-named South -- Sudan -- Killed by herders</b></div>
+            <div><b>Emily Stephen Kisamo -- Tanzania -- Suspicious death</b></div>
+            <div><b>Subhash Uike -- India -- Traffic accident</b></div>
+            <div><b>Rinku -- India -- Killedbyfalling tree</b></div>
+            <div><b>Patrick Lane -- SouthAfrica -- On-duty vehicle accident</b></div>
+            <div><b>Enos Mabila -- SouthAfrica -- Friendly fire</b></div>
+            <div><b>Baikswar GirdhariRamBanjara -- India -- On-duty road accident</b></div>
+            <div><b>Sebinyenzi Bavukirahe Yacinthe -- DRC -- Shot in FDLR ambush</b></div>
+            <div><b>Roger Gower -- Tanzania -- Shot & died in helicopter crash</b></div>
+            <div><b>Safiqual Islam -- India -- Killed by rhino</b></div>
+            <div><b>Anil Deka -- India -- No details</b></div>
+            <div><b>Kamal Singh -- India -- Killed by timber smugglers</b></div>
+            <div><b>Rudy Solis -- Nicaragua -- Shot by persons unknown</b></div>
+            <div><b>Wasim Ali -- India -- On-duty road accident</b></div>
+            <div><b>Aliyu Zakari -- Nigeria -- Killed by poachers</b></div>
+            <div><b>Wazir Zada -- Pakistan -- Killed inland dispute</b></div>
+            <div><b>Narendra Sharma -- India -- Killed in sand mafia incident</b></div>
+            <div><b>Christopher Fisher -- Honduras -- Suspicious death</b></div>
+            <div><b>Sahil Khan -- India -- Killed by sloth bear</b></div>
+            <div><b>Fidèle Mulonga Mulegalega -- DRC -- Killed by Mai Mai</b></div>
+            <div><b>Venant Mumbere Muvesevese -- DRC -- Killed by Mai Mai</b></div>
+            <div><b>Justin Magombo -- DRC -- Killed by Mai Mai</b></div>
+            <div><b>Sidheshwar Singh -- India -- Killed by timber mafia</b></div>
+            <div><b>Claudio Chiarelli -- Zimbabwe -- Friendly fire incident</b></div>
+            <div><b>Massimiliano “Max” Chiarelli -- Zimbabwe -- Friendly fire incident</b></div>
+            <div><b>Krishna Pal Singh -- India -- Killed by tiger</b></div>
+            <div><b>Keith Campbell -- Trinidad -- Killed fighting a bush fire</b></div>
+            <div><b>Kennedy Zvavahera -- Zimbabwe -- Found dead in park</b></div>
+            <div><b>Un-named -- China -- Trapped by fire</b></div>
+            <div><b>Un-named -- China -- Trapped by fire</b></div>
+            <div><b>Somarajan -- India -- On-duty road accident</b></div>
+            <div><b>Sheik Baji Sahid -- India -- Axed to death by timber poachers</b></div>
+            <div><b>Dadli Lazar -- India -- Axed to death by timber poachers</b></div>
+            <div><b>Hari Ram -- India -- Killed by tiger</b></div>
+            <div><b>Oleg Prodan -- Russia -- Killed in helicopter crash</b></div>
+            <div><b>Ravi Kumar -- India -- Died during training run</b></div>
+            <div><b>Richard Sungudikpio Ndingba -- DRC -- Killed by elephant poachers</b></div>
+            <div><b>Rigobert Anigobe Bagale -- DRC -- Killed by elephant poachers</b></div>
+            <div><b>Dieudonné Tsago Matikuli -- DRC -- Killed by elephant poachers</b></div>
+            <div><b>Kanagaraj -- India -- Killed by elephant</b></div>
+            <div><b>Upendra Singh Sengar -- India -- Cardiac arrest while training</b></div>
+            <div><b>Munna Chaudhry -- Bhutan -- Killed by elephant</b></div>
+            <div><b>Bijendra Jatav -- India -- Electrocuted</b></div>
+            <div><b>Chait Singh -- India -- Suffocated in forest fire</b></div>
+            <div><b>Lee Lynnes -- USA -- Grass mower accident</b></div>
+            <div><b>K. Madhavan Pillai -- India -- Gored to death by spotted deer</b></div>
+            <div><b>Veer Singh -- India -- Trampled to death by elephants</b></div>
+            <div><b>Pankaj Kumar -- India -- Trampled to death by elephants</b></div>
+            <div><b>Manohar Singh Rawat -- India -- Shot dead whilst on night patrol</b></div>
+            <div><b>Wizani Baloyi -- SouthAfrica -- Killed by rhino poachers</b></div>
+            <div><b>Mohammad Dehghani -- Iran -- Shot by poachers</b></div>
+            <div><b>Parviz Hormozi -- Iran -- Shot by poachers</b></div>
+            <div><b>Manouchehr Shojaei -- Iran -- Shot by poachers/thrownfromcliff</b></div>
+            <div><b>Taskeel Mohammad -- Pakistan -- Shot in personal feud</b></div>
+            <div><b>Jagath Seneviratne -- SriLanka -- Weapon misfired during arrest</b></div>
+            <div><b>Le Dinh Tue -- Vietnam -- Stabbed by poacher</b></div>
+            <div><b>Madubeko Ngwenya -- Zimbabwe -- Drowned when hippo attacked canoe</b></div>
+            <div><b>Jacob O’ Malley -- USA(BLM) -- Firetruck crashed on patrol</b></div>
+            <div><b>Will Hawkins -- USA(BLM) -- Firetruck crashed on patrol</b></div>
+            <div><b>Bancherd Leurdanon -- Thailand -- Heart attack while on patrol</b></div>
+            <div><b>Yothin Boonwong -- Thailand -- Fatal bacterial infection</b></div>
+            <div><b>Anucha Chiengkruea -- Thailand -- Killed by a landmine</b></div>
+            <div><b>Samart Sriboonrin -- Thailand -- Killed by an elephant</b></div>
+            <div><b>Chawalit Injamnong -- Thailand -- Car accident</b></div>
+            <div><b>Sophon Kaengkan -- Thailand -- Drowned</b></div>
+            <div><b>Prasit Khummoo -- Thailand -- Shot by poachers</b></div>
+            <div><b>Wieng Ploykuntod -- Thailand -- Killed by fever on patrol</b></div>
+            <div><b>Paiwan Kitpitak -- Thailand -- Smoke inhalation</b></div>
+            <div><b>Phaichit Mookjeen -- Thailand -- Killed by an elephant</b></div>
+            <div><b>Ratana Benchamopong -- Thailand -- Killed by an elephant</b></div>
+            <div><b>Lmeyiouni Lemoyog -- Kenya -- Killed on patrol by cattle rustlers</b></div>
+            <div><b>Koyiaso Lekoloi -- Kenya -- Shot in poacher ambush</b></div>
+            <div><b>Name currently unknown -- Thailand -- Shot by Illegal loggers</b></div>
+            <div><b>Name currently unknown -- Thailand -- Killed by Elephant</b></div>
+            <div><b>Alberto Curiñaupa Flores -- Peru -- Explosion</b></div>
+            <div><b>Oscar Byamungu Myaziro -- DRC -- Killed by rebels</b></div>
+            <div><b>Jirawuth Prompetch -- Thailand -- Died in Car Accident on Duty</b></div>
+            <div><b>Raghavan -- India -- Killed by elephant</b></div>
+            <div><b>Alexde Brito -- CapeVerde -- Electrocuted</b></div>
+            <div><b>Dwipen Baruah -- India -- Patrol boat capsized</b></div>
+            <div><b>Krishna Kumar -- India -- RTA whilst on-duty</b></div>
+            <div><b>Chandreshwar Singh -- India -- RTA whilst on-duty</b></div>
+            <div><b>Narinder Kumar -- India -- suspicious death</b></div>
+            <div><b>Emmanuel Mughogho -- Malawi -- Killed by buffalo</b></div>
+            <div><b>Karo Tayem -- India -- Killed by elephant</b></div>
+            <div><b>TRama Krishna -- India -- on-duty accident</b></div>
+            <div><b>Sanjeewa -- SriLanka -- Killed by elephant</b></div>
+            <div><b>Mohammad Akram -- Pakistan -- Beheaded by timber poachers</b></div>
+            <div><b>Razi Rehman -- Pakistan -- Killed by persons unknown</b></div>
+            <div><b>Élfido David Guardado Ponce -- Guatemala -- Killed by timber mafia</b></div>
+            <div><b>Orville “Bubba” Timberlake -- USA -- Killed clearing storm damage</b></div>
+            <div><b>Ranger Lumbga -- Kenya -- Died of wounds</b></div>
+            <div><b>Durjan Singh Yadav</th><th> -- India -- Drowned on-duty</b></div>
+            <div><b>Yamis Marko -- SouthSudan -- Shot by army</b></div>
+            <div><b>James Kaika -- Kenya -- Crushed by pole on-duty</b></div>
+        </div>
+        <p>UNKOWN RANGER–Representing all those not reported to date</p>
+    </div>
 </body>
 </html>

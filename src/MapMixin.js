@@ -32,9 +32,9 @@ window.shujaa = window.shujaa || {};
                 context2d.fill();
             }
             if (this._useImages && mover._image) {
-                var dw = this._blipRadius;
-                dw *= 2;
-                var dh = dw * mover._image.height / mover._image.width;
+                var dh = this._blipRadius;
+                dh *= 2;
+                var dw = dh * mover._image.width / mover._image.height;
                 context2d.drawImage(
                     mover._image,
                     mover._position[0] - dw / 2,

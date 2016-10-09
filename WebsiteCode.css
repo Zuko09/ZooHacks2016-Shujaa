@@ -55,7 +55,13 @@ img{
 .chatlog-format{
 	z-index:3;
 	width:60%;
-	height:10%
+	height:10%;
+	overflow-y: scroll;
+	z-index: 99;
+	background: rgba(0, 0, 0, 0.2);
+}
+.chatlog-format superimpose {
+	display: none;
 }
 .minimap-format{
 	z-index:3;
