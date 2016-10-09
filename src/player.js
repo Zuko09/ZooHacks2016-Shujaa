@@ -14,7 +14,7 @@ window.shujaa = window.shujaa || {};
     };
 
     Player.prototype.onSetDestination = function (event, data) {
-        console.log('destination:',data);
+        console.log('destination: [',data.x,', ', data.y,']');
         this.setDestination(data.x, data.y);
     };
 

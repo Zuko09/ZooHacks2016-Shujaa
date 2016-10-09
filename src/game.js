@@ -44,7 +44,7 @@ window.shujaa = window.shujaa || {};
         count = this._gameConfig.poachers.length;
         for (i = 0; i < count; ++i) {
             item = this._gameConfig.poachers[i];
-            this._poachers.push(new window.shujaa.Poacher(this, item.name, item.position[0], item.position[1]));
+            this._poachers.push(new window.shujaa.Poacher(this, item));
         }
 
         this._updateInterval = setInterval(this.update.bind(this), 1000 / 60);
