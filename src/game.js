@@ -63,7 +63,7 @@ window.shujaa = window.shujaa || {};
 
         this.emit('!update', {now: now / 1000, deltaTime: deltaTime / 1000});
 
-        var interactionRange = 2;
+        var interactionRange = this._bigmap._blipRadius * 1.5;
         var animalIndex, poacherIndex;
         var animal, poacher;
 
