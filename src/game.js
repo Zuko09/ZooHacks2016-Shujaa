@@ -28,7 +28,12 @@ window.shujaa = window.shujaa || {};
 
         this._updateInterval = setInterval(this.update.bind(this), 1000 / 60);
 
-        this._player.setPosition(this._bigmap._mapImage.width / 2, this._bigmap._mapImage.height / 2);
+        var initialPosition = [
+            this._bigmap._mapImage.width / 2,
+            this._bigmap._mapImage.height / 2
+        ];
+        this._player.setPosition(initialPosition[0], initialPosition[1]);
+        this._player.setDestination(initialPosition[0], initialPosition[1]);
 
         this.emit('!start');
     };
@@ -38,7 +43,7 @@ window.shujaa = window.shujaa || {};
         var deltaTime = now - this._lastTime;
         this._lastTime = now;
 
-        this.emit('!update', {now: now, deltaTime: deltaTime});
+        this.emit('!update', {now: now / 1000, deltaTime: deltaTime / 1000});
     };
 
     jQuery.extend(Game.prototype, jQuery.eventEmitter);
