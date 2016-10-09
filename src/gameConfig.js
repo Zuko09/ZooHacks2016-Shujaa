@@ -10,7 +10,11 @@ window.shujaa = window.shujaa || {};
         player: {
             name: 'Desmond',
             imageUrl: 'images/player.png',
-            position: [327, 353]
+            script: [
+                {time: 0, event: 'setPosition', dest: [308, 352]},
+                {time: 0, event: 'setDestination', dest: [318, 352]},
+                {time: 10, event: 'setDestination', dest: [325, 332]},
+            ]
         },
         rangers: [{
             name: 'Aisha',
@@ -37,13 +41,6 @@ window.shujaa = window.shujaa || {};
                 {time: 10, event: 'setDestination', dest: [323, 332]},
             ]
         }],
-        animals: [{
-            name: 'elephant',
-            position: [322, 339]
-        }, {
-            name: 'elephant',
-            position: [322, 359]
-        }],
         poachers: [{
             name: 'poacher',
             imageUrl: 'images/poacher.png',
@@ -52,6 +49,13 @@ window.shujaa = window.shujaa || {};
                 {time: 0, event: 'setDestination', dest: [314, 384]},
                 {time: 10, event: 'setDestination', dest: [314, 368]},
             ]
+        }],
+        animals: [{
+            name: 'elephant',
+            position: [322, 339]
+        }, {
+            name: 'elephant',
+            position: [322, 359]
         }],
     };
 })();

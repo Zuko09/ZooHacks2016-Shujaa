@@ -12,7 +12,7 @@ window.shujaa = window.shujaa || {};
             this._image.src = config.imageUrl;
         }
 
-        this.initMoverMixin(game, 10);
+        this.initMoverMixin(game, 10, config.script);
 
         game.on('!setDestination', this.onSetDestination.bind(this));
         this.on('!positionSet', this.onPositionSet.bind(this));

@@ -49,10 +49,6 @@ window.shujaa = window.shujaa || {};
 
         this._updateInterval = setInterval(this.update.bind(this), 1000 / 60);
 
-        var initialPosition = this._gameConfig.player.position;
-        this._player.setPosition(initialPosition[0], initialPosition[1]);
-        this._player.setDestination(initialPosition[0], initialPosition[1]);
-
         this.emit('!start');
     };
 
