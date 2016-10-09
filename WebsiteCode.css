@@ -1,6 +1,11 @@
 html{
-	-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;
-	box-sizing:border-box
+	-ms-text-size-adjust:100%;
+	-moz-text-size-adjust:100%;
+	-webkit-text-size-adjust:100%;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-moz-user-select:none;
+	box-sizing:border-box;
 }*,*:before,*:after{
 	box-sizing:inherit
 }
@@ -41,9 +46,6 @@ img{
 .container{
 	padding:0.01em
 }
-.display-names{
-	position:absolute;right:0;top:200px;
-}
 .start-format{
 	z-index:4;
 	width:100%;
@@ -55,13 +57,7 @@ img{
 .chatlog-format{
 	z-index:3;
 	width:60%;
-	height:10%;
-	overflow-y: scroll;
-	z-index: 99;
-	background: rgba(0, 0, 0, 0.2);
-}
-.chatlog-format superimpose {
-	display: none;
+	height:15%
 }
 .minimap-format{
 	z-index:3;
