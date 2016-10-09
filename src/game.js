@@ -10,6 +10,12 @@ window.shujaa = window.shujaa || {};
         this._player = null;
         this._rangers = [];
         this._animals = [];
+
+        // map.png: a pixel is ~0.3 miles
+        this.pixelsPerMile = 66 / 20;
+
+        // boost speed to ridiculous levels: for realistic speed we would need a much more detailed map
+        this.pixelsPerMile *= 500;
     }
 
     Game.prototype.start = function () {

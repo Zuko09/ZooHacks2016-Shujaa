@@ -6,53 +6,23 @@ window.shujaa = window.shujaa || {};
 
     Player = function (game) {
         this._game = game;
-        this._position = [0,0];
-        this._destination = [0,0];
 
-        // map.png: a pixel is ~0.3 miles
-        var pixelsPerMile = 66 / 20;
+        this.initMoverMixin(game, 10);
 
-        // desired speed in MPH
-        var speedMilesPerHour = 1000;
-
-        // pixels per second
-        this._speed = speedMilesPerHour / 60 / 60 * pixelsPerMile;
-
-        game.on('!update', this.onUpdate.bind(this));
         game.on('!setDestination', this.onSetDestination.bind(this));
-    };
-
-    Player.prototype.onUpdate = function (event, data) {
-        var offset = [
-            this._destination[0] - this._position[0],
-            this._destination[1] - this._position[1]
-        ];
-        var distance = Math.sqrt(offset[0] * offset[0] + offset[1] * offset[1]);
-        var travel = this._speed * data.deltaTime;
-        if (distance > travel) {
-            offset[0] *= travel / distance;
-            offset[1] *= travel / distance;
-            this.setPosition(this._position[0] + offset[0], this._position[1] + offset[1]);
-        }
-        else if (distance > 0) {
-            this.setPosition(this._destination[0], this._destination[1]);
-        }
+        this.on('!positionSet', this.onPositionSet.bind(this));
     };
 
     Player.prototype.onSetDestination = function (event, data) {
         this.setDestination(data.x, data.y);
     };
 
-    Player.prototype.setDestination = function (x, y) {
-        this._destination[0] = x;
-        this._destination[1] = y;
+    Player.prototype.onPositionSet = function (event, data) {
+        this._game.emit('!playerMoved', data);
     };
 
-    Player.prototype.setPosition = function (x, y) {
-        this._position[0] = x;
-        this._position[1] = y;
-        this._game.emit('!playerMoved', {x: this._position[0], y: this._position[1]});
-    };
+    jQuery.extend(Player.prototype, jQuery.eventEmitter);
+    jQuery.extend(Player.prototype, window.shujaa.MoverMixin);
 
     window.shujaa.Player = Player;
 })();
