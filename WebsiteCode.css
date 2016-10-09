@@ -16,14 +16,7 @@ img{
 	max-width:100%;
 }
 .btn-format{
-	left:47%;
-	bottom:46%;
-}
-container > h1{
-	
-	left:44%;
-	bottom:49%;
-	font-size:48px!important
+	border-radius:5px;
 }
 .display-topleft{
 	position:absolute;left:0;top:0
