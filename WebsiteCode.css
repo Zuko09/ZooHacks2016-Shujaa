@@ -41,6 +41,9 @@ img{
 .container{
 	padding:0.01em
 }
+.display-names{
+	position:absolute;right:0;top:200px;
+}
 .start-format{
 	z-index:4;
 	width:100%;
