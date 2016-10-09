@@ -48,6 +48,7 @@
             var interval = setInterval(function() {
                 messages.eq(i).show();
                 i++;
+                $('#chatlog-view').scrollTop($('#chatlog-view')[0].scrollHeight);
                 if (i === msglen) {
                     clearInterval(interval);
                 }
@@ -175,6 +176,7 @@
             <div class="msg"><superimpose></div>
 
             <div class="msg">CAPT FRANCIS and AISHA return. The three experienced rangers arrest the two poachers. CAPT FRANCIS Call the base, Aisha, we need to get medical care to her.</div>
+            <div id="chatlog-bottom"></div>
         </div>
 
         <div id="flash">

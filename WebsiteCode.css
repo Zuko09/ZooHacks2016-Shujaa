@@ -57,7 +57,7 @@ img{
 .chatlog-format{
 	z-index:3;
 	width:60%;
-	height:15%
+	max-height:100px;
     overflow-y: scroll;
     z-index: 99;
     background: rgba(0, 0, 0, 0.2);
