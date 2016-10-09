@@ -31,6 +31,14 @@
 			window.shujaa.game.start();
             $('#names-table-table').addClass('.credit-animation');
 		}
+		window.shujaa.onAnimalCaught = function(animalName) {
+			console.log('a poacher caught an animal:', animalName);
+			console.log('the game will now end.');
+		};
+		window.shujaa.onPoacherCaught = function() {
+			console.log('the user caught a poacher');
+			console.log('the game will now end.');
+		};
     </script>
     <style type="text/css">
         #names-table-table {

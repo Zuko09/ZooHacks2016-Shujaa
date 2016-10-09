@@ -78,7 +78,13 @@ window.shujaa = window.shujaa || {};
             if (distance(this._player, poacher) <= interactionRange) {
                 // TODO: you win
                 poacher.dead = true;
-                console.log('player caught poacher');
+                try {
+                    window.shujaa.onPoacherCaught();
+                }
+                catch(e) {
+                    console.log('error calling onPoacherCaught:',e);
+                }
+                this.endGame();
             }
         }
 
@@ -91,12 +97,23 @@ window.shujaa = window.shujaa || {};
                 if (distance(animal, poacher) < interactionRange) {
                     // TODO: you lose
                     animal.dead = true;
-                    console.log('poacher caught animal');
+                    try {
+                        window.shujaa.onAnimalCaught(animal.name);
+                    }
+                    catch(e) {
+                        console.log('error calling onAnimalCaught:',e);
+                    }
+                    this.endGame();
                 }
             }
         }
 
         this._animals = this._animals.filter(function(a) { return !a.dead; });
+    };
+
+    Game.prototype.endGame = function() {
+        clearInterval(this._updateInterval);
+        this._updateInterval = null;
     };
 
     jQuery.extend(Game.prototype, jQuery.eventEmitter);
