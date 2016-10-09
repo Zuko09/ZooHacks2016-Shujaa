@@ -54,13 +54,25 @@
             }, 1000);
         }
 
+        function flash(msg,cb) {
+            $('#flash').text(msg);
+            $('#flash').show(400, function() {
+                setTimeout(function() {
+                     $('#flash').hide();
+                    cb && cb();
+                }, 2000);
+            })
+        }
+
 		window.shujaa.onAnimalCaught = function(animalName) {
-			console.log('a poacher caught an animal:', animalName);
-			console.log('the game will now end.');
+			flash('a poacher caught an animal:'+ animalName, function() {
+                flash('the game will now end.');
+            });
 		};
 		window.shujaa.onPoacherCaught = function() {
-			console.log('the user caught a poacher');
-			console.log('the game will now end.');
+			flash('the user caught a poacher', function() {
+                flash('The game will now end.')
+            });
 		};
     </script>
     <style type="text/css">
@@ -163,6 +175,10 @@
             <div class="msg"><superimpose></div>
 
             <div class="msg">CAPT FRANCIS and AISHA return. The three experienced rangers arrest the two poachers. CAPT FRANCIS Call the base, Aisha, we need to get medical care to her.</div>
+        </div>
+
+        <div id="flash">
+            
         </div>
 
         <div id="minimap-view" class="container display-topright minimap-format" ng-show="showingMinimapView">

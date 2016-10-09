@@ -76,3 +76,13 @@ img{
 .large{
 	font-size:36px!important
 }
+#flash {
+	z-index:1000;
+	position: absolute;
+	top:20px; 
+	width: 100%;
+	text-align: center;
+	font-family: "Open Sans",Tahoma,Arial;
+	font-size: 64px;
+	color: #d9534f;
+}
