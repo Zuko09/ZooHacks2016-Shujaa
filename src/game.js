@@ -28,10 +28,7 @@ window.shujaa = window.shujaa || {};
 
         this._updateInterval = setInterval(this.update.bind(this), 1000 / 60);
 
-        var initialPosition = [
-            this._bigmap._mapImage.width / 2,
-            this._bigmap._mapImage.height / 2
-        ];
+        var initialPosition = [317,359];
         this._player.setPosition(initialPosition[0], initialPosition[1]);
         this._player.setDestination(initialPosition[0], initialPosition[1]);
 

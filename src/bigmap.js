@@ -11,7 +11,7 @@ window.shujaa = window.shujaa || {};
         this._canvas = $('#'+canvasId)[0];
         this._ctx = enhanceContext(this._canvas.getContext('2d'));
 
-        this._zoom = 3;
+        this._zoom = 10;
 
         game.on('!start', this.onStart.bind(this));
         game.on('!update', this.onUpdate.bind(this));

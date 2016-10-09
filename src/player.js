@@ -8,7 +8,15 @@ window.shujaa = window.shujaa || {};
         this._game = game;
         this._position = [0,0];
         this._destination = [0,0];
-        this._speed = 100; // map pixel per second
+
+        // map.png: a pixel is ~0.3 miles
+        var pixelsPerMile = 66 / 20;
+
+        // desired speed in MPH
+        var speedMilesPerHour = 1000;
+
+        // pixels per second
+        this._speed = speedMilesPerHour / 60 / 60 * pixelsPerMile;
 
         game.on('!update', this.onUpdate.bind(this));
         game.on('!setDestination', this.onSetDestination.bind(this));
