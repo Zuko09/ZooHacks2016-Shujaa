@@ -97,25 +97,22 @@ img{
 }
 #names-view {
 	text-align: center;
-
 }
-        #names-wrapper {
-          posixtion: absolute;
-          top: 100%;
-          left: 50%;
-          width: 100%;
-          margin-left: -100px;
-          text-align: center;
-        }
-        .credit-animation {
-          animation: 15s credits linear;
-          -webkit-animation: 15s credits linear;
-        }
+#names-wrapper {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  overflow: auto;
+}
+.credit-animation {
+  animation: 15s credits linear;
+  -webkit-animation: 15s credits linear;
+}
 @keyframes credits {
   0% {
-    top: 100%;
+    top: 600px;
   }
   100% {
-    top: -500%;
+    top: -2000px;
   }
 }

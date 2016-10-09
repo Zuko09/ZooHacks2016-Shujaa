@@ -39,7 +39,7 @@
                 chatlogAnimation();
             }
             if (id == 'names-view') {
-                $('#names-wrapper').addClass('credit-animation');
+                $('#names-wrapper').animate({top: -1000}, 10000);
             }
         }
 
@@ -302,8 +302,10 @@
             <div><b>Durjan Singh Yadav</th><th> -- India -- Drowned on-duty</b></div>
             <div><b>Yamis Marko -- SouthSudan -- Shot by army</b></div>
             <div><b>James Kaika -- Kenya -- Crushed by pole on-duty</b></div>
+            <p>UNKOWN RANGER–Representing all those not reported to date</p>
+            <div id="scrollTop"></div>
         </div>
-        <p>UNKOWN RANGER–Representing all those not reported to date</p>
+        
     </div>
 </body>
 </html>
