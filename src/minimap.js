@@ -5,7 +5,7 @@ window.shujaa = window.shujaa || {};
     var MiniMap;
 
     MiniMap = function (game, canvasId, mapUrl) {
-        this.initMapMixin(game, mapUrl);
+        this.initMapMixin(game, mapUrl, 3);
 
         this._game = game;
         this._canvas = $('#'+canvasId)[0];

@@ -10,6 +10,7 @@ window.shujaa = window.shujaa || {};
         this._player = null;
         this._rangers = [];
         this._animals = [];
+        this._poachers = [];
 
         // map.png: a pixel is ~0.3 miles
         this.pixelsPerMile = 66 / 20;
@@ -19,22 +20,36 @@ window.shujaa = window.shujaa || {};
     }
 
     Game.prototype.start = function () {
+        var count, i, item;
 
         this._startTime = performance.now();
         this._lastTime = 0;
 
         console.log('started');
 
-        this._player = new window.shujaa.Player(this, this._gameConfig.playerName);
+        this._player = new window.shujaa.Player(this, this._gameConfig.player.name);
 
-        var numRangers = this._gameConfig.rangerNames.length;
-        for (var i = 0; i < numRangers; ++i) {
-            this._rangers.push(new window.shujaa.Ranger(this, this._gameConfig.rangerNames[i]));
+        count = this._gameConfig.rangers.length;
+        for (i = 0; i < count; ++i) {
+            item = this._gameConfig.rangers[i];
+            this._rangers.push(new window.shujaa.Ranger(this, item.name, item.position[0], item.position[1]));
+        }
+
+        count = this._gameConfig.animals.length;
+        for (i = 0; i < count; ++i) {
+            item = this._gameConfig.animals[i];
+            this._animals.push(new window.shujaa.Animal(this, item.name, item.position[0], item.position[1]));
+        }
+
+        count = this._gameConfig.poachers.length;
+        for (i = 0; i < count; ++i) {
+            item = this._gameConfig.poachers[i];
+            this._poachers.push(new window.shujaa.Poacher(this, item.name, item.position[0], item.position[1]));
         }
 
         this._updateInterval = setInterval(this.update.bind(this), 1000 / 60);
 
-        var initialPosition = [317,359];
+        var initialPosition = this._gameConfig.player.position;
         this._player.setPosition(initialPosition[0], initialPosition[1]);
         this._player.setDestination(initialPosition[0], initialPosition[1]);
 

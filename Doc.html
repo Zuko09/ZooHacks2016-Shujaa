@@ -15,6 +15,7 @@
     <script src="src/game.js" defer></script>
 	<script src="src/minimap.js" defer></script>
 	<script src="src/player.js" defer></script>
+	<script src="src/poacher.js" defer></script>
 	<script src="src/ranger.js" defer></script>
     <script src="src/world.js" defer></script>
     <script>
@@ -24,8 +25,31 @@
 			bigmapCanvasId: 'bigMap',
 			minimapUrl: 'images/map.png',
 			minimapCanvasId: 'miniMap',
-			playerName: 'Desmond',
-			rangerNames: ['Aisha', 'Kwesi', 'Francis'],
+			player: {
+				name: 'Desmond',
+				position: [327,353]
+			},
+			rangers: [{
+				name: 'Aisha',
+				position: [325,329]
+			}, {
+				name: 'Kwesi',
+				position: [312,359]
+			}, {
+				name: 'Francis',
+				position: [342,359]
+			}],
+			animals: [{
+				name: 'elephant',
+				position: [322,339]
+			}, {
+				name: 'elephant',
+				position: [317,369]
+			}],
+			poachers: [{
+				name: 'poacher',
+				position: [332,379]
+			}],
         };
         // call shujaa.start() to start game, but not until after the page has loaded
         window.shujaa = window.shujaa || {};
