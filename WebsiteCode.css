@@ -82,6 +82,9 @@ img{
 .large{
 	font-size:36px!important
 }
+#names-wrapper {
+
+}
 #flash {
 	z-index:1000;
 	position: absolute;
@@ -91,4 +94,28 @@ img{
 	font-family: "Open Sans",Tahoma,Arial;
 	font-size: 64px;
 	color: #d9534f;
+}
+#names-view {
+	text-align: center;
+
+}
+        #names-wrapper {
+          posixtion: absolute;
+          top: 100%;
+          left: 50%;
+          width: 100%;
+          margin-left: -100px;
+          text-align: center;
+        }
+        .credit-animation {
+          animation: 15s credits linear;
+          -webkit-animation: 15s credits linear;
+        }
+@keyframes credits {
+  0% {
+    top: 100%;
+  }
+  100% {
+    top: -500%;
+  }
 }

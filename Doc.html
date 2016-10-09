@@ -38,6 +38,9 @@
                 window.shujaa.game.start();
                 chatlogAnimation();
             }
+            if (id == 'names-view') {
+                $('#names-wrapper').addClass('credit-animation');
+            }
         }
 
         function chatlogAnimation() {
@@ -67,37 +70,21 @@
 
 		window.shujaa.onAnimalCaught = function(animalName) {
 			flash('a poacher caught an animal:'+ animalName, function() {
-                flash('the game will now end.');
+                flash('the game will now end.', function() {
+                    changePage('names-view');
+                });
+
             });
 		};
 		window.shujaa.onPoacherCaught = function() {
 			flash('the user caught a poacher', function() {
-                flash('The game will now end.')
+                flash('The game will now end.', function() {
+                    changePage('names-view');
+                })
             });
 		};
     </script>
-    <style type="text/css">
-        #names-table-table {
-          posixtion: absolute;
-          top: 100%;
-          left: 50%;
-          width: 600px;
-          margin-left: -100px;
-          text-align: center;
-        }
-        .credit-animation {
-          animation: 15s credits linear;
-          -webkit-animation: 15s credits linear;
-        }
-        @keyframes credits {
-          0% {
-            top: 100%;
-          }
-          100% {
-            top: -500%;
-          }
-        }
-    </style>
+
 </head>
 
 <body id="myPage">
@@ -187,8 +174,9 @@
             <canvas id="miniMap" width="200" height="200"></canvas>
         </div>
 	</div>
-	<div id="names-table" class="container" ng-show="namesList" style="margin-right:200px;">
-        <div style="width:100%;" id='names-wrapper'>
+	<div id="names-view" class="container">
+        <div id='names-wrapper'>
+            <h3>In memory of those fallen...we thank you!</h3>
             <div><b>Ramaiah -- India -- Trampled by elephant</b></div>
             <div><b>Naba Krishna Mahanta -- India -- On-duty road accident</b></div>
             <div><b>David Ruhl -- USA -- Died firefighting</b></div>
