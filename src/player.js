@@ -4,8 +4,13 @@ window.shujaa = window.shujaa || {};
 (function (){
     var Player;
 
-    Player = function (game) {
+    Player = function (game, config) {
         this._game = game;
+
+        if (config.imageUrl) {
+            this._image = new Image();
+            this._image.src = config.imageUrl;
+        }
 
         this.initMoverMixin(game, 10);
 

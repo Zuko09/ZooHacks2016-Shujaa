@@ -27,7 +27,7 @@ window.shujaa = window.shujaa || {};
 
         console.log('started');
 
-        this._player = new window.shujaa.Player(this, this._gameConfig.player.name);
+        this._player = new window.shujaa.Player(this, this._gameConfig.player);
 
         count = this._gameConfig.rangers.length;
         for (i = 0; i < count; ++i) {
